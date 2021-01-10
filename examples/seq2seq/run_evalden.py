@@ -98,7 +98,7 @@ def datetime_now():
 
 
 model_name="/content/drive/MyDrive/models/my_models"
-input_path="/content/transformers/examples/xsum_tr/dummy.source"
+input_path="/content/transformers/examples/dummy.source"
 save_path="dbart_cnn_12_6_test_gens1.txt"
 reference_path="/content/transformers/examples/xsum_tr/val.target"
 score_path="metrics1.json"
