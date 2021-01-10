@@ -97,10 +97,10 @@ def datetime_now():
 # --task summarization --bs 8 --fp16
 
 
-model_name="/content/drive/MyDrive/models/my_models_mbart"
-input_path="/content/transformers/examples/seq2seq/xsum/dummy.source"
+model_name="/content/drive/MyDrive/models/my_models"
+input_path="/content/transformers/examples/xsum_tr/dummy.source"
 save_path="dbart_cnn_12_6_test_gens1.txt"
-reference_path="/content/transformers/examples/seq2seq/xsum/val.target"
+reference_path="/content/transformers/examples/xsum_tr/val.target"
 score_path="metrics1.json"
 device=DEFAULT_DEVICE
 
