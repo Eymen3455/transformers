@@ -25,9 +25,9 @@ from transformers import (
     AutoModelForSeq2SeqLM,
     AutoTokenizer,
     HfArgumentParser,
-    MBartTokenizer,
-    MBartForConditionalGeneration,
-    MBartConfig,
+    BartTokenizer,
+    BartForConditionalGeneration,
+    BartConfig,
     Seq2SeqTrainer,
     Seq2SeqTrainingArguments,
     set_seed,
@@ -192,7 +192,7 @@ def main():
     # The .from_pretrained methods guarantee that only one local process can concurrently
     # download model & vocab.
 
-    config = MBartConfig.from_pretrained(
+    config = BartConfig.from_pretrained(
         model_args.config_name if model_args.config_name else model_args.model_name_or_path,
         cache_dir=model_args.cache_dir,
     )
@@ -203,11 +203,11 @@ def main():
             assert hasattr(config, p), f"({config.__class__.__name__}) doesn't have a `{p}` attribute"
             setattr(config, p, getattr(training_args, p))
 
-    tokenizer = MBartTokenizer.from_pretrained(
+    tokenizer = BartTokenizer.from_pretrained(
         model_args.tokenizer_name if model_args.tokenizer_name else model_args.model_name_or_path,
         cache_dir=model_args.cache_dir,
     )
-    model = MBartForConditionalGeneration.from_pretrained(
+    model = BartForConditionalGeneration.from_pretrained(
         model_args.model_name_or_path,
         from_tf=".ckpt" in model_args.model_name_or_path,
         config=config,
