@@ -25,7 +25,7 @@ from typing import Dict, List
 import torch
 from tqdm import tqdm
 
-from transformers import AutoModelForSeq2SeqLM, AutoTokenizer, MBartTokenizer, MBartForConditionalGeneration
+from transformers import AutoModelForSeq2SeqLM, AutoTokenizer, BartTokenizer, BartForConditionalGeneration
 from utils import calculate_bleu, calculate_rouge, chunks, parse_numeric_n_bool_cl_kwargs, use_task_specific_params
 
 
@@ -49,11 +49,11 @@ def generate_summaries_or_translations(
     """Save model.generate results to <out_file>, and return how long it took."""
     fout = Path(out_file).open("w", encoding="utf-8")
     model_name = str(model_name)
-    model = MBartForConditionalGeneration.from_pretrained(model_name).to(device)
+    model = BartForConditionalGeneration.from_pretrained(model_name).to(device)
     if fp16:
         model = model.half()
 
-    tokenizer = MBartTokenizer.from_pretrained(model_name)
+    tokenizer = BartTokenizer.from_pretrained(model_name)
     logger.info(f"Inferred tokenizer type: {tokenizer.__class__}")  # if this is wrong, check config.model_type.
 
     start_time = time.time()
